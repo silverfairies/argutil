@@ -1,19 +1,19 @@
 package an.argentum.util;
 
-public class Pair <T> {
-    private T key;
-    private T value;
+public class Pair <K, V> {
+    protected K key;
+    protected V value;
 
-    public Pair ( T key, T value ) {
+    public Pair ( K key, V value ) {
         this.key = key;
         this.value = value;
     }
 
-    public T getKey () {
+    public K getKey () {
         return this.key;
     }
 
-    public T getValue () {
+    public V getValue () {
         return this.value;
     }
 }

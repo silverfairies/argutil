@@ -2,6 +2,7 @@ package an.argentum.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public final class TextEdit {
     public static String arrayToString( String[] input ) {
@@ -30,5 +31,14 @@ public final class TextEdit {
 
     public static void execute (String... prompt) {
         execute(prompt, null);
+    }
+
+    public static String getFirstString ( String input ) throws StringIndexOutOfBoundsException {
+        if ( input.indexOf('"') == input.lastIndexOf('"') || input.lastIndexOf('"') == -1 ) throw new StringIndexOutOfBoundsException("No valid String found!");
+        return input.substring( input.indexOf('"') + 1, input.indexOf( '"', input.indexOf('"') + 1));
+    }
+
+    public static String getFirstString ( String[] input ) {
+        return getFirstString(arrayToString(input));
     }
 }
