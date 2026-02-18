@@ -2,7 +2,6 @@ package an.argentum.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public final class TextEdit {
     public static String arrayToString( String[] input ) {
