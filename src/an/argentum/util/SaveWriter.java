@@ -11,12 +11,22 @@ public class SaveWriter {
     static protected String separator = ": ";
 
     public static void save ( File file, HashMap<String, String> contents ) throws IOException {
-        write ( file, contents, separator);
+        write ( file, contents );
     }
 
-    private static void write ( File file, HashMap<String, String> contents, String delimiter ) throws IOException {
+    public static void append ( File file, String key, String value ) throws IOException {
+        FileWriter fw = new FileWriter(file, true);
+        fw.write(construct(key, value));
+        fw.close();
+    }
+
+    private static void write ( File file, HashMap<String, String> contents ) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        for ( String key: contents.keySet() ) bw.write( key + delimiter + "\"" + contents.get(key) + "\"\n");
+        for ( String key: contents.keySet() ) bw.write( construct(key, contents.get(key)) );
         bw.close();
+    }
+
+    private static String construct ( String key, String value ) {
+        return key + separator + "\"" + value + "\"\n";
     }
 }
